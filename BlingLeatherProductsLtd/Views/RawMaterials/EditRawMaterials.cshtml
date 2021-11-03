@@ -1,0 +1,109 @@
+﻿@model RawMaterials
+
+<form method="post" asp-action="EditRawMaterials">
+    <input asp-for="RMID" hidden/>
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3">Edit Raw Materials</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row text-center font-weight-bold">
+                    <div class="col-2">
+                        <label asp-for="HSCode"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="BuyerName"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="MaterialName"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="BinNumber"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="ColorName"></label>
+                    </div>
+                </div>
+                <div class="form-group row text-center">
+                    <div class="col-2">
+                        <input asp-for="HSCode" class="form-control" />
+                        <span asp-validation-for="HSCode" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="BuyerName" class="form-control" />
+                        <span asp-validation-for="BuyerName" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="MaterialName" class="form-control" />
+                        <span asp-validation-for="MaterialName" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="BinNumber" class="form-control" />
+                        <span asp-validation-for="BinNumber" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="ColorName" class="form-control" />
+                        <span asp-validation-for="ColorName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row text-center font-weight-bold">
+                    <div class="col-2">
+                        <label asp-for="ArticleNumber"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="OrderedQuantity"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="RecievedQuantity"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="DateRecieved"></label>
+                    </div>
+
+                </div>
+                <div class="form-group row text-center">
+                    <div class="col-2">
+                        <input asp-for="ArticleNumber" class="form-control" />
+                        <span asp-validation-for="ArticleNumber" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="OrderedQuantity" class="form-control" />
+                        <span asp-validation-for="OrderedQuantity" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="RecievedQuantity" class="form-control" />
+                        <span asp-validation-for="RecievedQuantity" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="DateRecieved" class="form-control" />
+                        <span asp-validation-for="DateRecieved" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <input type="submit" class="btn-info w-75" value="Update Material" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="RawMaterialsList" class="btn btn-danger w-75">Back</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}
+
+
+

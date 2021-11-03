@@ -1,0 +1,102 @@
+﻿@model BlingLeatherProductsLtd.Models.RawMaterials
+
+<form method="post" asp-action="DeletePost">
+    <input asp-for="RMID" hidden/>
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3">Delete Raw Materials</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row text-center font-weight-bold">
+                    <div class="col-2">
+                        <label asp-for="HSCode"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="BuyerName"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="MaterialName"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="BinNumber"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="ColorName"></label>
+                    </div>
+                </div>
+                <div class="form-group row text-center">
+                    <div class="col-2">
+                        <input asp-for="HSCode" disabled class="form-control" />
+                   
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="BuyerName" disabled class="form-control" />
+                        
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="MaterialName" disabled class="form-control" />
+                       
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="BinNumber" disabled class="form-control" />
+                       
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="ColorName" disabled class="form-control" />
+                       
+                    </div>
+                </div>
+                <div class="form-group row text-center font-weight-bold">
+                    <div class="col-2">
+                        <label asp-for="ArticleNumber"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="OrderedQuantity"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="RecievedQuantity"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="DateRecieved"></label>
+                    </div>
+
+                </div>
+                <div class="form-group row text-center">
+                    <div class="col-2">
+                        <input asp-for="ArticleNumber" disabled class="form-control" />
+                       
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="OrderedQuantity" disabled class="form-control" />
+                       
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="RecievedQuantity" disabled class="form-control" />
+                      
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="DateRecieved" disabled class="form-control" />
+                       
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <input type="submit" class="btn-danger w-75" value="Delete Material" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="RawMaterialsList" class="btn btn-info w-75">Back</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+

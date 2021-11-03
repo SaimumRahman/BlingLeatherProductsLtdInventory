@@ -1,0 +1,97 @@
+﻿@model IEnumerable<RawMaterials>
+
+
+ <div class="container p-3">
+     <div class="row pt-4">
+         <div class="col-6">
+             <h2 class="text-primary">Raw Materials List</h2>
+         </div>
+         <div class="col-6 text-right">
+             <a asp-controller="RawMaterials" asp-action="PostRawMaterials" class="btn btn-primary">
+                 Add Raw Materials
+             </a>
+         </div>
+         <form method="get" asp-action="RawMaterialsList">
+             <p>
+                 <input type="search" placeholder="Enter HS-Code" value="@ViewData["RawMaterialsList"]" name="searches" />
+                 <input type="submit" value="Search" class="btn btn-primary" />
+                 <a asp-action="RawMaterialsList">Get All Raw Materials</a>
+              </p>
+         </form>
+     </div>
+     <br /><br />
+
+     @if (Model.Count() > 0)
+     {
+
+
+<table class="table table-bordered table-striped" style="width:10%">
+            <thead>
+                <tr>
+                    <th>
+                        RM-ID
+                    </th>
+                    <th>
+                        HS-Code
+                    </th>
+                    <th>
+                        BuyerName
+                    </th>
+                    <th>
+                        MaterialName
+                    </th>
+                    <th>
+                        Bin-Number
+                    </th>
+                    <th>
+                        Color-Name
+                    </th>
+                    <th>
+                        Article-Number
+                    </th>
+                    <th>
+                        Ordered-Quantity
+                    </th>
+                    <th>
+                        Recieved-Quantity
+                    </th>
+                    <th>
+                        Date-Recieved
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var rawmaterials in Model)
+                {
+                    <tr>
+                    <td>@rawmaterials.RMID</td>
+                    <td>@rawmaterials.HSCode</td>
+                    <td>@rawmaterials.BuyerName</td>
+                    <td>@rawmaterials.MaterialName</td>
+                    <td>@rawmaterials.BinNumber</td>
+                    <td>@rawmaterials.ColorName</td>
+                    <td>@rawmaterials.ArticleNumber</td>
+                    <td>@rawmaterials.OrderedQuantity</td>
+                    <td>@rawmaterials.RecievedQuantity</td>
+                    <td>@rawmaterials.DateRecieved</td>
+                    <td class="text-center">
+                        <div class="btn-group" role="group">
+                            <a asp-controller="Rawmaterials" asp-route-ID="@rawmaterials.RMID" asp-action="EditRawMaterials" class="btn btn-outline-primary">EDIT</a>
+                            <a asp-controller="Rawmaterials" asp-route-ID="@rawmaterials.RMID" asp-action="Delete" class="btn btn-outline-danger">DELETE</a>
+                            <a asp-controller="Rawmaterials" asp-route-ID="@rawmaterials.RMID" asp-action="RawMaterialsDetails" class="btn btn-outline-secondary">DETAILS</a>
+                        </div>
+                    </td>
+                    </tr>
+
+                }
+            </tbody>
+
+        </table> 
+     }
+     else 
+     { 
+         <p>No Data Exists</p>
+     }
+
+ </div>
+
