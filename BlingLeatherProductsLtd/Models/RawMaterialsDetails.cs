@@ -19,12 +19,6 @@ namespace BlingLeatherProductsLtd.Models
         [Required]
         public string Unit { get; set; }
         [Required]
-        public string BeforeQuantity { get; set; }
-        [Required]
-        public string RecievedeQuantity { get; set; }
-        [Required]
-        public string TotalQuantity { get; set; }
-        [Required]
         public string IssuedQuantity { get; set; }
         [Required]
         public string BalanceQuantity{ get; set; }

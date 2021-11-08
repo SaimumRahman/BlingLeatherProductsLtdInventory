@@ -29,6 +29,9 @@ namespace BlingLeatherProductsLtd.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("BalancedQuantity")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("BinNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -77,10 +80,6 @@ namespace BlingLeatherProductsLtd.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BeforeQuantity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ChalanNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -96,10 +95,6 @@ namespace BlingLeatherProductsLtd.Migrations
                     b.Property<int>("RMID")
                         .HasColumnType("int");
 
-                    b.Property<string>("RecievedeQuantity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Remarks")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -109,10 +104,6 @@ namespace BlingLeatherProductsLtd.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SectionOrDepartment")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TotalQuantity")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

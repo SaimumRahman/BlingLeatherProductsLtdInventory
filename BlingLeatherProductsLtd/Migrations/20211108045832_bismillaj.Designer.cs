@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlingLeatherProductsLtd.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20211031034005_addRawMatrialsOne")]
-    partial class addRawMatrialsOne
+    [Migration("20211108045832_bismillaj")]
+    partial class bismillaj
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,6 +29,9 @@ namespace BlingLeatherProductsLtd.Migrations
 
                     b.Property<string>("ArticleNumber")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BalancedQuantity")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BinNumber")
@@ -66,6 +69,53 @@ namespace BlingLeatherProductsLtd.Migrations
                     b.HasKey("RMID");
 
                     b.ToTable("RawMaterials");
+                });
+
+            modelBuilder.Entity("BlingLeatherProductsLtd.Models.RawMaterialsDetails", b =>
+                {
+                    b.Property<int>("RMDID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BalanceQuantity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ChalanNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IssuedQuantity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RMID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Remarks")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RequisitionNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SectionOrDepartment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Unit")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RMDID");
+
+                    b.ToTable("RawMaterialsDetails");
                 });
 #pragma warning restore 612, 618
         }

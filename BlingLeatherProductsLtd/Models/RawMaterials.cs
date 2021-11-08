@@ -28,7 +28,8 @@ namespace BlingLeatherProductsLtd.Models
         [Required]
         public string RecievedQuantity { get; set; }
         [Required]
-        public string DateRecieved { get; set; }
+        public string DateRecieved { get; set; } 
+        public string BalancedQuantity { get; set; }
 
 
     }

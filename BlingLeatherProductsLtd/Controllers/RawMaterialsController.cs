@@ -34,6 +34,7 @@ namespace BlingLeatherProductsLtd.Controllers
         public IActionResult PostRawMaterials(RawMaterials raw)
         {
             db.RawMaterials.Add(raw);
+            raw.BalancedQuantity = raw.RecievedQuantity;
             db.SaveChanges();
             return RedirectToAction("RawMaterialsList");
         }
@@ -111,15 +112,32 @@ namespace BlingLeatherProductsLtd.Controllers
             }   
         }
 
-        public IActionResult PostRawMaterialDetails()
+        public IActionResult PostRawMaterialDetails(int? id)
         {
-            return View();
+            if (id == null) {
+                return View();
+            }
+            var det = db.RawMaterialsDetails.Find(id);
+            return View(det.RMID);
         }
         //POST-CREATE
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult PostRawMaterialDetails(RawMaterialsDetails details)
         {
+            RawMaterials mat = new();
+            string iss = details.IssuedQuantity;
+            int id = details.RMID;
+           
+            var querys = from x in db.RawMaterials select x;
+            string re = querys.Where(x => x.RMID.Equals(id)).SingleOrDefault()?.BalancedQuantity;
+            int res = int.Parse(re) - int.Parse(iss);
+            mat.BalancedQuantity = res.ToString();
+
+            var p = db.RawMaterials.Find(id);
+            p.BalancedQuantity = res.ToString();
+            db.RawMaterials.Update(p);
+            details.BalanceQuantity = res.ToString();
             db.RawMaterialsDetails.Add(details);
             db.SaveChanges();
             return RedirectToAction("RawMaterialsList");

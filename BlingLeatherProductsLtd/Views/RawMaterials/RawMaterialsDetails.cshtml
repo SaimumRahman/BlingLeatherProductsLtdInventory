@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<RawMaterialsDetails>
 
+
 @using (Html.BeginForm()) 
 {
     <input type="text" name="RMID" hidden />
@@ -7,15 +8,16 @@
 }
 <div class="container p-3">
     <div class="row pt-4">
-        
+
         <div class="col-6">
             <h2 class="text-primary">Raw Materials List</h2>
         </div>
-        <div class="col-6 text-right">
-            <a asp-controller="RawMaterials" asp-action="PostRawMaterialDetails" class="btn btn-primary">
-                Add Raw Materials Details
-            </a>
-        </div>
+      
+          <div class="col-6 text-right">
+                <a asp-controller="RawMaterials" asp-action="PostRawMaterialDetails" class="btn btn-primary">
+                    Add Raw Materials Details
+                </a>
+            </div>
         
     </div>
     <br /><br />
@@ -43,15 +45,6 @@
                         Unit
                     </th>
                     <th>
-                        BeforeQuantity
-                    </th>
-                    <th>
-                        RecievedeQuantity
-                    </th>
-                    <th>
-                        TotalQuantity
-                    </th>
-                    <th>
                         IssuedQuantity
                     </th>
                     <th>
@@ -77,9 +70,6 @@
                     <td>@details.Date</td>
                     <td>@details.ChalanNumber</td>
                     <td>@details.Unit</td>
-                    <td>@details.BeforeQuantity</td>
-                    <td>@details.RecievedeQuantity</td>
-                    <td>@details.TotalQuantity</td>
                     <td>@details.IssuedQuantity</td>
                     <td>@details.BalanceQuantity</td>
                     <td>@details.RequisitionNumber</td>
