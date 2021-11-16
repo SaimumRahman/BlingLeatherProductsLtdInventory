@@ -16,5 +16,7 @@ namespace BlingLeatherProductsLtd.Data
 
         public DbSet<RawMaterials> RawMaterials { get; set; }
         public DbSet<RawMaterialsDetails> RawMaterialsDetails { get; set; }
+        public DbSet<ChemicalMaterials> ChemicalMaterials { get; set; }
+        public DbSet<ChemicalMaterialsDetails> ChemicalMaterialsDetails { get; set; }
     }
 }

@@ -1,15 +1,19 @@
-﻿@model RawMaterialsDetails
+﻿@model ChemicalMaterialsDetails
 
-<form method="post" asp-action="PostRawMaterialDetails">
+<form method="post" asp-action="EditChemicalMaterialsDetails">
+    <input asp-for="CMID" hidden />
     <div class="border p-3">
         <div class="form-group row">
-            <h2 class="text-black-50 pl-3">Add Raw Material Details</h2>
+            <h2 class="text-black-50 pl-3">Edit Raw Materials</h2>
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="form-group row text-center font-weight-bold">
                     <div class="col-2">
-                        <label asp-for="RMID"></label>
+                        <label asp-for="CMDID"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="CMID"></label>
                     </div>
                     <div class="col-2">
                         <label asp-for="Date"></label>
@@ -20,21 +24,18 @@
                     <div class="col-2">
                         <label asp-for="Unit"></label>
                     </div>
-                    <div class="col-2">
-                        <label asp-for="IssuedQuantity"></label>
-                    </div>
-                    <div class="col-2">
-                        <label asp-for="RequisitionNumber"></label>
-                    </div>
-
                 </div>
                 <div class="form-group row text-center">
                     <div class="col-2">
-                        <input asp-for="RMID" class="form-control" />
-                        <span asp-validation-for="RMID" class="text-danger"></span>
+                        <input asp-for="CMDID" disabled class="form-control" />
+                        <span asp-validation-for="CMDID" class="text-danger"></span>
                     </div>
                     <div class="col-2">
-                        <input asp-for="Date" placeholder="MM-DD-YY" class="form-control" />
+                        <input asp-for="CMID" disabled class="form-control" />
+                        <span asp-validation-for="CMID" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="Date" class="form-control" />
                         <span asp-validation-for="Date" class="text-danger"></span>
                     </div>
                     <div class="col-2">
@@ -45,26 +46,38 @@
                         <input asp-for="Unit" class="form-control" />
                         <span asp-validation-for="Unit" class="text-danger"></span>
                     </div>
-                    <div class="col-2">
-                        <input asp-for="IssuedQuantity" class="form-control" />
-                        <span asp-validation-for="IssuedQuantity" class="text-danger"></span>
-                    </div>
-                    <div class="col-2">
-                        <input asp-for="RequisitionNumber" class="form-control" />
-                        <span asp-validation-for="RequisitionNumber" class="text-danger"></span>
-                    </div>
-
                 </div>
                 <div class="form-group row text-center font-weight-bold">
+                    <div class="col-2">
+                        <label asp-for="IssuedQuantity"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="BalanceQuantity"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="RequisitionNumber"></label>
+                    </div>
                     <div class="col-2">
                         <label asp-for="SectionOrDepartment"></label>
                     </div>
                     <div class="col-2">
                         <label asp-for="Remarks"></label>
                     </div>
-                </div>
 
+                </div>
                 <div class="form-group row text-center">
+                    <div class="col-2">
+                        <input asp-for="IssuedQuantity" class="form-control" />
+                        <span asp-validation-for="IssuedQuantity" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="BalanceQuantity" class="form-control" />
+                        <span asp-validation-for="BalanceQuantity" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="RequisitionNumber" class="form-control" />
+                        <span asp-validation-for="RequisitionNumber" class="text-danger"></span>
+                    </div>
                     <div class="col-2">
                         <input asp-for="SectionOrDepartment" class="form-control" />
                         <span asp-validation-for="SectionOrDepartment" class="text-danger"></span>
@@ -73,21 +86,24 @@
                         <input asp-for="Remarks" class="form-control" />
                         <span asp-validation-for="Remarks" class="text-danger"></span>
                     </div>
+
                 </div>
                 <div class="form-group row">
                     <div class="col-8 offset-2 row">
                         <div class="col">
-                            <input type="submit" class="btn-info w-75" value="Add Material Details" />
+                            <input type="submit" class="btn-info w-75" value="Update Material" />
                         </div>
                         <div class="col">
                             <a asp-action="RawMaterialsList" class="btn btn-danger w-75">Back</a>
                         </div>
                     </div>
                 </div>
+
             </div>
-            </div>
-    
+        </div>
+    </div>
 </form>
+
 @section Scripts{
 
     @{

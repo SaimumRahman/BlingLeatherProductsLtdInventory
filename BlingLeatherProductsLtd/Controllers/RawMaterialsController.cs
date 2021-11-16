@@ -57,6 +57,7 @@ namespace BlingLeatherProductsLtd.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult EditRawMaterials(RawMaterials raw)
         {
+            raw.BalancedQuantity = raw.RecievedQuantity;
             db.RawMaterials.Update(raw);
             db.SaveChanges();
             return RedirectToAction("RawMaterialsList");
@@ -92,7 +93,9 @@ namespace BlingLeatherProductsLtd.Controllers
             var query = from x in db.RawMaterials select x;
             if (!String.IsNullOrEmpty(searches))
             {
-                query = query.Where(x => x.HSCode.Contains(searches));
+                query = query.Where(x => x.HSCode.Contains(searches) || x.MaterialName.Contains(searches) || x.RMID.ToString().Contains(searches)
+                || x.ArticleNumber.Contains(searches)
+                );
             }
             return View(await query.AsNoTracking().ToListAsync());
         }

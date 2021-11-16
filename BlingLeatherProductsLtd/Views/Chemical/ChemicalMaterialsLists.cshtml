@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ChemicalMaterials>
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Chemical Materials List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Chemical" asp-action="PostChemicalMaterialsLists" class="btn btn-primary">
+                Add Chemical Materials
+            </a>
+        </div>
+        <form method="get" asp-action="ChemicalMaterialsLists">
+            <p>
+                <input type="search" placeholder="Enter HS-Code or Name" value="@ViewData["ChemicalMaterials"]" name="searches" />
+                <input type="submit" value="Search" class="btn btn-primary" />
+                <a asp-action="ChemicalMaterialsLists">Get All Chemical Materials</a>
+            </p>
+        </form>
+    </div>
+    <br /><br />
+
+    @if (Model.Count() > 0)
+    {
+
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        CM-ID
+                    </th>
+                    <th>
+                        HS-Code
+                    </th>
+                    <th>
+                        BuyerName
+                    </th>
+                    <th>
+                        MaterialName
+                    </th>
+                    <th>
+                        Bin-Number
+                    </th>
+                
+                    <th>
+                        Ordered-Quantity
+                    </th>
+                    <th>
+                        Recieved-Quantity
+                    </th>
+                    <th>
+                        Balanced-Quantity
+                    </th>
+                    <th>
+                        Date-Recieved
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var chemicalMaterials in Model)
+                {
+                    <tr>
+                        <td>@chemicalMaterials.CMID</td>
+                        <td>@chemicalMaterials.HSCode</td>
+                        <td>@chemicalMaterials.BuyerName</td>
+                        <td>@chemicalMaterials.MaterialName</td>
+                        <td>@chemicalMaterials.BinNumber</td>
+                        
+                        <td>@chemicalMaterials.OrderedQuantity</td>
+                        <td>@chemicalMaterials.RecievedQuantity</td>
+                        <td>@chemicalMaterials.BalancedQuantity</td>
+                        <td>@chemicalMaterials.DateRecieved</td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+                                <a asp-controller="Chemical" asp-route-ID="@chemicalMaterials.CMID" asp-action="EditChemicalMaterials" class="btn btn-outline-primary">EDIT</a>
+                                <a asp-controller="Chemical" asp-route-ID="@chemicalMaterials.CMID" asp-action="Delete" class="btn btn-outline-danger">DELETE</a>
+                                <a asp-controller="Chemical" asp-route-ID="@chemicalMaterials.CMID" asp-action="ChemicalMaterialsDetails" class="btn btn-outline-secondary">DETAILS</a>
+                              
+                            </div>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+
+        </table>
+    }
+    else
+    {
+        <p>No Data Exists</p>
+    }
+
+</div>
+

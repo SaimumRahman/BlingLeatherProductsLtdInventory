@@ -1,9 +1,9 @@
-﻿@model RawMaterials
+﻿@model ChemicalMaterials
 
-<form method="post" asp-action="PostRawMaterials">
+<form method="post" asp-action="PostChemicalMaterialsLists">
     <div class="border p-3">
         <div class="form-group row">
-            <h2 class="text-black-50 pl-3">Add Raw Materials    </h2>
+            <h2 class="text-black-50 pl-3">Add Chemical Materials    </h2>
         </div>
         <div class="row">
             <div class="col-12">
@@ -20,9 +20,7 @@
                     <div class="col-2">
                         <label asp-for="BinNumber"></label>
                     </div>
-                    <div class="col-2">
-                        <label asp-for="ColorName"></label>
-                    </div>
+                    
                 </div>
                 <div class="form-group row text-center">
                     <div class="col-2">
@@ -41,15 +39,10 @@
                         <input asp-for="BinNumber" class="form-control" />
                         <span asp-validation-for="BinNumber" class="text-danger"></span>
                     </div>
-                    <div class="col-2">
-                        <input asp-for="ColorName" class="form-control" />
-                        <span asp-validation-for="ColorName" class="text-danger"></span>
-                    </div>
+                  
                 </div>
                 <div class="form-group row text-center font-weight-bold">
-                    <div class="col-2">
-                        <label asp-for="ArticleNumber"></label>
-                    </div>
+                   
                     <div class="col-2">
                         <label asp-for="OrderedQuantity"></label>
                     </div>
@@ -62,10 +55,7 @@
 
                 </div>
                 <div class="form-group row text-center">
-                    <div class="col-2">
-                        <input asp-for="ArticleNumber" class="form-control" />
-                        <span asp-validation-for="ArticleNumber" class="text-danger"></span>
-                    </div>
+                   
                     <div class="col-2">
                         <input asp-for="OrderedQuantity" class="form-control" />
                         <span asp-validation-for="OrderedQuantity" class="text-danger"></span>
@@ -86,7 +76,7 @@
                             <input type="submit" class="btn-info w-75" value="Add Material" />
                         </div>
                         <div class="col">
-                            <a asp-action="RawMaterialsList" class="btn btn-danger w-75">Back</a>
+                            <a asp-action="ChemicalMaterialsLists" class="btn btn-danger w-75">Back</a>
                         </div>
                     </div>
                 </div>

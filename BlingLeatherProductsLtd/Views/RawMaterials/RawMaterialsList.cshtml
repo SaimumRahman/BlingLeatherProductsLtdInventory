@@ -13,7 +13,7 @@
          </div>
          <form method="get" asp-action="RawMaterialsList">
              <p>
-                 <input type="search" placeholder="Enter HS-Code" value="@ViewData["RawMaterialsList"]" name="searches" />
+                 <input type="search" placeholder="Enter HS-Code or Name" value="@ViewData["RawMaterialsList"]" name="searches" />
                  <input type="submit" value="Search" class="btn btn-primary" />
                  <a asp-action="RawMaterialsList">Get All Raw Materials</a>
               </p>
@@ -25,7 +25,7 @@
      {
 
 
-<table class="table table-bordered table-striped" style="width:10%">
+<table class="table table-bordered table-striped" >
             <thead>
                 <tr>
                     <th>
@@ -41,7 +41,7 @@
                         MaterialName
                     </th>
                     <th>
-                        Bin-Number
+                        Bin-Number  
                     </th>
                     <th>
                         Color-Name
