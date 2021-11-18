@@ -18,6 +18,7 @@ namespace BlingLeatherProductsLtd
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -30,6 +31,9 @@ namespace BlingLeatherProductsLtd
                 ));
 
             services.AddControllersWithViews();
+            services.AddSession(options=> {
+                options.IdleTimeout = TimeSpan.FromMinutes(15);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,12 +55,16 @@ namespace BlingLeatherProductsLtd
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
+
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=StoreLogin}/{id?}");
+              
             });
         }
     }

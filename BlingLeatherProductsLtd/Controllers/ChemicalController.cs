@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace BlingLeatherProductsLtd.Controllers
 {
@@ -17,10 +19,26 @@ namespace BlingLeatherProductsLtd.Controllers
         {
             this.db = db;
         }
+
+        
         public IActionResult ChemicalMaterialsLists()
         {
-            IEnumerable<ChemicalMaterials> chemicalMaterials= db.ChemicalMaterials;
-            return View(chemicalMaterials);
+
+            var obj = HttpContext.Session.GetString("log");
+
+            if (obj == null)
+            {
+
+                return RedirectToAction("StoreLogin");
+            }
+            else {
+                 IEnumerable<ChemicalMaterials> chemicalMaterials = db.ChemicalMaterials;
+                 return View(chemicalMaterials);
+               // ViewBag.data = HttpContext.Session.GetString("name"); ;
+                // return View(ViewBag.data);
+            }
+              
+                  
         }
         //GET-CREATE
         public IActionResult PostChemicalMaterialsLists()
@@ -166,5 +184,6 @@ namespace BlingLeatherProductsLtd.Controllers
             return RedirectToAction("ChemicalMaterialsLists");
         }
     }
+   
 
 }
