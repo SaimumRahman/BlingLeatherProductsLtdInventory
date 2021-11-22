@@ -11,6 +11,7 @@ namespace BlingLeatherProductsLtd.Controllers
 {
     public class RawMaterialsController : Controller
     {
+        private StoreLogin typer;
         private readonly ApplicationDBContext db;
 
         public RawMaterialsController(ApplicationDBContext db)
@@ -21,6 +22,15 @@ namespace BlingLeatherProductsLtd.Controllers
         {
             IEnumerable<RawMaterials> rawMaterialsLists = db.RawMaterials;  
             return View(rawMaterialsLists);
+        }
+        public IActionResult RawMaterialsListStore(StoreLogin types)
+        {
+            typer = types;
+            if (types.Type.Contains("admin")) {
+                IEnumerable<RawMaterials> rawMaterialsLists = db.RawMaterials;
+                return View(rawMaterialsLists);
+            }
+            return NotFound();
         }
         //GET-CREATE
         public IActionResult PostRawMaterials()
@@ -114,6 +124,27 @@ namespace BlingLeatherProductsLtd.Controllers
                 return View(details);
             }   
         }
+        public IActionResult RawMaterialsDetailsStore(int? id)
+        {
+
+           
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    var querys = from x in db.RawMaterialsDetails select x;
+                    querys = querys.Where(x => x.RMID.Equals(id));
+                    IEnumerable<RawMaterialsDetails> details = querys;
+                    return View(details);
+                }
+            }
+            
+            
+        }
+
 
         public IActionResult PostRawMaterialDetails(int? id)
         {
@@ -122,7 +153,8 @@ namespace BlingLeatherProductsLtd.Controllers
             }
             var det = db.RawMaterialsDetails.Find(id);
             return View(det.RMID);
-        }
+        }  
+
         //POST-CREATE
         [HttpPost]
         [ValidateAntiForgeryToken]

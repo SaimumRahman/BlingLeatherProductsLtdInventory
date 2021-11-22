@@ -33,12 +33,25 @@ namespace BlingLeatherProductsLtd.Controllers
             {
 
                 {
-                    var obj = db.StoreLogins.Where(a => a.Email.Equals(objUser.Email) && a.Passwords.Equals(objUser.Passwords)).FirstOrDefault();
+                    var obj = db.StoreLogins.Where(a => a.Email.Equals(objUser.Email) && a.Passwords.Equals(objUser.Passwords) && a.Type.Equals(objUser.Type)).FirstOrDefault();
                     if (obj != null)
                     {
-                        HttpContext.Session.SetString("log", obj.Email);
-                        
-                        return this.RedirectToAction("Index", "Home");
+                        if (objUser.Type.Contains("admin"))
+                        {
+
+                            HttpContext.Session.SetString("log", obj.Email);
+
+                            return this.RedirectToAction("RawMaterialsListStore", "RawMaterials", objUser);
+
+                        }
+                        else {
+
+
+                            return this.RedirectToAction("RawMaterialsList", "RawMaterials");
+                        }
+
+                       
+                       
                     }
                 }
             }

@@ -221,6 +221,10 @@ namespace BlingLeatherProductsLtd.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("StoreUserId");
 
                     b.ToTable("StoreLogins");

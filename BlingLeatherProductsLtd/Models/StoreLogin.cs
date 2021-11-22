@@ -14,5 +14,7 @@ namespace BlingLeatherProductsLtd.Models
         public String Email{ get; set; }
         [Required]
         public String Passwords{ get; set; }
+        [Required]
+        public String Type{ get; set; }
     }
 }
