@@ -1,7 +1,10 @@
 using BlingLeatherProductsLtd.Data;
+using BlingLeatherProductsLtd.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,14 +29,20 @@ namespace BlingLeatherProductsLtd
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")
                 ));
 
-            services.AddControllersWithViews();
-            services.AddSession(options=> {
-                options.IdleTimeout = TimeSpan.FromMinutes(15);
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
             });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+            services.AddControllersWithViews();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,19 +60,19 @@ namespace BlingLeatherProductsLtd
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
+            app.UseAuthentication();
+           
 
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseAuthentication();
-            app.UseSession();
-
             app.UseEndpoints(endpoints =>
             {
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Login}/{action=StoreLogin}/{id?}");
+                    pattern: "{controller=Account}/{action=Login}/{id?}");
               
             });
         }

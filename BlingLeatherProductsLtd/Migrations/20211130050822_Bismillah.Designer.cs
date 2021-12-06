@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlingLeatherProductsLtd.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20211112162646_chemicaldetails")]
-    partial class chemicaldetails
+    [Migration("20211130050822_Bismillah")]
+    partial class Bismillah
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,6 +38,10 @@ namespace BlingLeatherProductsLtd.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ChalanNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DateRecieved")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -55,6 +59,10 @@ namespace BlingLeatherProductsLtd.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RecievedQuantity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Unit")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -77,10 +85,6 @@ namespace BlingLeatherProductsLtd.Migrations
                     b.Property<int>("CMID")
                         .HasColumnType("int");
 
-                    b.Property<string>("ChalanNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Date")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -98,10 +102,6 @@ namespace BlingLeatherProductsLtd.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SectionOrDepartment")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Unit")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -132,6 +132,10 @@ namespace BlingLeatherProductsLtd.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ChalanNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ColorName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -141,7 +145,6 @@ namespace BlingLeatherProductsLtd.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HSCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MaterialName")
@@ -153,6 +156,10 @@ namespace BlingLeatherProductsLtd.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RecievedQuantity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Unit")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -169,10 +176,6 @@ namespace BlingLeatherProductsLtd.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("BalanceQuantity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ChalanNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -196,10 +199,6 @@ namespace BlingLeatherProductsLtd.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SectionOrDepartment")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Unit")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

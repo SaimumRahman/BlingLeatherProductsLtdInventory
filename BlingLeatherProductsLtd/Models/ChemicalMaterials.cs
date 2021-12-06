@@ -18,6 +18,10 @@ namespace BlingLeatherProductsLtd.Models
         [Required]
         public string MaterialName { get; set; }
         [Required]
+        public string ChalanNumber { get; set; }
+        [Required]
+        public string Unit { get; set; }
+        [Required]
         public string BinNumber{ get; set; }
         [Required]
         public string OrderedQuantity { get; set; }

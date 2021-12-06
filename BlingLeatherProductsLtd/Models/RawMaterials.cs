@@ -10,13 +10,15 @@ namespace BlingLeatherProductsLtd.Models
     {
         [Key]
         public int RMID { get; set; }
-        [Required]
-
         public string HSCode { get; set; }
         [Required]
         public string BuyerName { get; set; }
         [Required]
         public string MaterialName { get; set; }
+        [Required]
+        public string Unit { get; set; }
+        [Required]
+        public string ChalanNumber { get; set; }
         [Required]
         public string BinNumber{ get; set; }
         [Required]

@@ -1,5 +1,6 @@
 ﻿using BlingLeatherProductsLtd.Data;
 using BlingLeatherProductsLtd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,38 +8,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace BlingLeatherProductsLtd.Controllers
 {
     public class RawMaterialsController : Controller
     {
-        private StoreLogin typer;
+        
         private readonly ApplicationDBContext db;
 
         public RawMaterialsController(ApplicationDBContext db)
         {
             this.db = db;
         }
+        [Authorize(Roles ="Admin")]
         public IActionResult RawMaterialsList()
         {
             IEnumerable<RawMaterials> rawMaterialsLists = db.RawMaterials;  
             return View(rawMaterialsLists);
         }
-        public IActionResult RawMaterialsListStore(StoreLogin types)
-        {
-            typer = types;
-            if (types.Type.Contains("admin")) {
-                IEnumerable<RawMaterials> rawMaterialsLists = db.RawMaterials;
-                return View(rawMaterialsLists);
-            }
-            return NotFound();
-        }
+
+
         //GET-CREATE
+        [Authorize(Roles = "Admin")]
         public IActionResult PostRawMaterials()
         {
          
             return View();
         }
         //POST-CREATE
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult PostRawMaterials(RawMaterials raw)
@@ -49,6 +47,7 @@ namespace BlingLeatherProductsLtd.Controllers
             return RedirectToAction("RawMaterialsList");
         }
         //GET-EDIT
+        [Authorize(Roles = "Admin")]
         public IActionResult EditRawMaterials(int? id)
         {
             if(id==null|| id == 0) 
@@ -63,6 +62,8 @@ namespace BlingLeatherProductsLtd.Controllers
             return View(raws);
         }
         //POST-EDIT
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult EditRawMaterials(RawMaterials raw)
@@ -73,6 +74,8 @@ namespace BlingLeatherProductsLtd.Controllers
             return RedirectToAction("RawMaterialsList");
         }
         //GET-DELETE
+
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
@@ -87,6 +90,8 @@ namespace BlingLeatherProductsLtd.Controllers
             return View(raws);
         }
         //POST-DELETE
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id,RawMaterials raw)
@@ -96,6 +101,7 @@ namespace BlingLeatherProductsLtd.Controllers
             return RedirectToAction("RawMaterialsList");
         }
 
+        [Authorize(Roles = "Admin,User")]
         [HttpGet]
         public async Task<IActionResult> RawMaterialsList(string searches)
         {
@@ -110,6 +116,7 @@ namespace BlingLeatherProductsLtd.Controllers
             return View(await query.AsNoTracking().ToListAsync());
         }
 
+        [Authorize(Roles = "Admin,User")]
         public IActionResult RawMaterialsDetails(int? id)
         {
             if (id == null)
@@ -124,28 +131,9 @@ namespace BlingLeatherProductsLtd.Controllers
                 return View(details);
             }   
         }
-        public IActionResult RawMaterialsDetailsStore(int? id)
-        {
+   
 
-           
-            {
-                if (id == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    var querys = from x in db.RawMaterialsDetails select x;
-                    querys = querys.Where(x => x.RMID.Equals(id));
-                    IEnumerable<RawMaterialsDetails> details = querys;
-                    return View(details);
-                }
-            }
-            
-            
-        }
-
-
+        [Authorize(Roles = "Admin")]
         public IActionResult PostRawMaterialDetails(int? id)
         {
             if (id == null) {
@@ -153,9 +141,10 @@ namespace BlingLeatherProductsLtd.Controllers
             }
             var det = db.RawMaterialsDetails.Find(id);
             return View(det.RMID);
-        }  
+        }
 
         //POST-CREATE
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult PostRawMaterialDetails(RawMaterialsDetails details)

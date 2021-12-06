@@ -1,15 +1,100 @@
 ﻿@model IEnumerable<ChemicalMaterials>
 
-<div class="container p-3">
-    <div class="row pt-4">
-        <div class="col-6">
-            <h2 class="text-primary">Chemical Materials List</h2>
-        </div>
-        <div class="col-6 text-right">
-            <a asp-controller="Chemical" asp-action="PostChemicalMaterialsLists" class="btn btn-primary">
-                Add Chemical Materials
-            </a>
-        </div>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Raw Materials List</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #badceb;
+            font-family: sans-serif;
+        }
+
+        .heading {
+            font-size: 40px;
+            text-align: center;
+            color: azure;
+            margin-bottom: 40px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .table thead {
+                background-color: gainsboro;
+            }
+
+                .table thead tr th {
+                    font-size: 14px;
+                    font-weight: 600;
+                    letter-spacing: .25px;
+                    color: midnightblue;
+                    opacity: 1;
+                    padding: 7px;
+                    vertical-align: top;
+                    border: 1px solid gainsboro;
+                }
+
+            .table tbody tr td {
+                font-size: 14px;
+                letter-spacing: .25px;
+                font-weight: normal;
+                color: navy;
+                background-color: azure;
+                padding: 6px;
+                border: 1px solid gainsboro;
+            }
+
+                .table tbody tr td .btn-outline-primary {
+                    width: 80px;
+                    text-decoration: none;
+                    line-height: 25px;
+                    display: inline-block;
+                    font-size: small;
+                    text-align: center;
+                    vertical-align: middle;
+                    opacity: 1;
+                }
+
+                .table tbody tr td .btn-outline-danger {
+                    width: 80px;
+                    text-decoration: none;
+                    line-height: 25px;
+                    display: inline-block;
+                    font-size: small;
+                    text-align: center;
+                    vertical-align: middle;
+                    opacity: 1;
+                }
+
+                .table tbody tr td .btn-outline-secondary {
+                    width: 80px;
+                    text-decoration: none;
+                    line-height: 25px;
+                    display: inline-block;
+                    font-size: small;
+                    text-align: center;
+                    vertical-align: middle;
+                    opacity: 1;
+                }
+    </style>
+</head>
+<body>
+    <div class="col-6 text-right">
+        <a asp-controller="Chemical" asp-action="PostChemicalMaterialsLists" class="btn btn-primary">
+            Add Chemical Materials
+        </a>
+    </div>
+    <div>
         <form method="get" asp-action="ChemicalMaterialsLists">
             <p>
                 <input type="search" placeholder="Enter HS-Code or Name" value="@ViewData["ChemicalMaterials"]" name="searches" />
@@ -18,78 +103,82 @@
             </p>
         </form>
     </div>
-    <br /><br />
-
     @if (Model.Count() > 0)
     {
-
-
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>
-                        CM-ID
-                    </th>
-                    <th>
-                        HS-Code
-                    </th>
-                    <th>
-                        BuyerName
-                    </th>
-                    <th>
-                        MaterialName
-                    </th>
-                    <th>
-                        Bin-Number
-                    </th>
-                
-                    <th>
-                        Ordered-Quantity
-                    </th>
-                    <th>
-                        Recieved-Quantity
-                    </th>
-                    <th>
-                        Balanced-Quantity
-                    </th>
-                    <th>
-                        Date-Recieved
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var chemicalMaterials in Model)
-                {
+        <div class="table-container">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>@chemicalMaterials.CMID</td>
-                        <td>@chemicalMaterials.HSCode</td>
-                        <td>@chemicalMaterials.BuyerName</td>
-                        <td>@chemicalMaterials.MaterialName</td>
-                        <td>@chemicalMaterials.BinNumber</td>
-                        
-                        <td>@chemicalMaterials.OrderedQuantity</td>
-                        <td>@chemicalMaterials.RecievedQuantity</td>
-                        <td>@chemicalMaterials.BalancedQuantity</td>
-                        <td>@chemicalMaterials.DateRecieved</td>
-                        <td class="text-center">
-                            <div class="btn-group" role="group">
-                                <a asp-controller="Chemical" asp-route-ID="@chemicalMaterials.CMID" asp-action="EditChemicalMaterials" class="btn btn-outline-primary">EDIT</a>
-                                <a asp-controller="Chemical" asp-route-ID="@chemicalMaterials.CMID" asp-action="Delete" class="btn btn-outline-danger">DELETE</a>
-                                <a asp-controller="Chemical" asp-route-ID="@chemicalMaterials.CMID" asp-action="ChemicalMaterialsDetails" class="btn btn-outline-secondary">DETAILS</a>
-                              
-                            </div>
-                        </td>
+                        <th>
+                            CM-ID
+                        </th>
+                        <th>
+                            HS-Code
+                        </th>
+                        <th>
+                            BuyerName
+                        </th>
+                        <th>
+                            MaterialName
+                        </th>
+                        <th>
+                            Bin-Number
+                        </th>
+                        <th>
+                            ChalanNumber
+                        </th>
+                        <th>
+                            Unit
+                        </th>
+                        <th>
+                            Ordered-Quantity
+                        </th>
+                        <th>
+                            Recieved-Quantity
+                        </th>
+                        <th>
+                            Balanced-Quantity
+                        </th>
+                        <th>
+                            Date-Recieved
+                        </th>
                     </tr>
+                </thead>
+                <tbody>
+                    @foreach (var chemicalMaterials in Model)
+                    {
+                        <tr>
+                            <td>@chemicalMaterials.CMID</td>
+                            <td>@chemicalMaterials.HSCode</td>
+                            <td>@chemicalMaterials.BuyerName</td>
+                            <td>@chemicalMaterials.MaterialName</td>
+                            <td>@chemicalMaterials.BinNumber</td>
+                            <td>@chemicalMaterials.ChalanNumber</td>
+                            <td>@chemicalMaterials.Unit</td>
+                            <td>@chemicalMaterials.OrderedQuantity</td>
+                            <td>@chemicalMaterials.RecievedQuantity</td>
+                            <td>@chemicalMaterials.BalancedQuantity</td>
+                            <td>@chemicalMaterials.DateRecieved</td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <a asp-controller="Chemical" asp-route-ID="@chemicalMaterials.CMID" asp-action="EditChemicalMaterials" class="btn btn-outline-primary">Edit</a>
+                                    <a asp-controller="Chemical" asp-route-ID="@chemicalMaterials.CMID" asp-action="Delete" class="btn btn-outline-danger">Delete</a>
+                                    <a asp-controller="Chemical" asp-route-ID="@chemicalMaterials.CMID" asp-action="ChemicalMaterialsDetails" class="btn btn-outline-secondary">Details</a>
 
-                }
-            </tbody>
+                                </div>
+                            </td>
+                        </tr>
 
-        </table>
+                    }
+                </tbody>
+            </table>
+        </div>
     }
-    else
-    {
+    else { 
+    
         <p>No Data Exists</p>
     }
+</body>
+   
 
-</div>
-
+</html>

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BlingLeatherProductsLtd.Controllers
 {
@@ -20,7 +21,7 @@ namespace BlingLeatherProductsLtd.Controllers
             this.db = db;
         }
 
-        
+        [Authorize(Roles = "Admin,User")]
         public IActionResult ChemicalMaterialsLists()
         {
 
@@ -29,24 +30,29 @@ namespace BlingLeatherProductsLtd.Controllers
             if (obj == null)
             {
 
-                return RedirectToAction("StoreLogin");
+                return RedirectToAction("Login");
             }
             else {
                  IEnumerable<ChemicalMaterials> chemicalMaterials = db.ChemicalMaterials;
                  return View(chemicalMaterials);
-               // ViewBag.data = HttpContext.Session.GetString("name"); ;
-                // return View(ViewBag.data);
+               
             }
-              
-                  
+
+            
         }
+
+
         //GET-CREATE
+        [Authorize(Roles = "Admin")]
         public IActionResult PostChemicalMaterialsLists()
         {
 
             return View();
         }
+
+
         //POST-CREATE
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult PostChemicalMaterialsLists(ChemicalMaterials chemical)
@@ -56,6 +62,9 @@ namespace BlingLeatherProductsLtd.Controllers
             db.SaveChanges();
             return RedirectToAction("ChemicalMaterialsLists");
         }
+
+
+        [Authorize(Roles = "Admin")]
         //GET-EDIT
         public IActionResult EditChemicalMaterials(int? id)
         {
@@ -70,6 +79,9 @@ namespace BlingLeatherProductsLtd.Controllers
             }
             return View(chemical);
         }
+
+
+        [Authorize(Roles = "Admin")]
         //POST-EDIT
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -80,6 +92,9 @@ namespace BlingLeatherProductsLtd.Controllers
             db.SaveChanges();
             return RedirectToAction("ChemicalMaterialsLists");
         }
+
+
+        [Authorize(Roles = "Admin")]
         //GET-DELETE
         public IActionResult Delete(int? id)
         {
@@ -94,6 +109,9 @@ namespace BlingLeatherProductsLtd.Controllers
             }
             return View(chemical);
         }
+
+
+        [Authorize(Roles = "Admin")]
         //POST-DELETE
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -103,6 +121,9 @@ namespace BlingLeatherProductsLtd.Controllers
             db.SaveChanges();
             return RedirectToAction("ChemicalMaterialsLists");
         }
+
+
+        [Authorize(Roles = "Admin,User")]
         [HttpGet]
         public async Task<IActionResult> ChemicalMaterialsLists(string searches)
         {
@@ -114,6 +135,9 @@ namespace BlingLeatherProductsLtd.Controllers
             }
             return View(await query.AsNoTracking().ToListAsync());
         }
+
+
+        [Authorize(Roles = "Admin,User")]
         public IActionResult ChemicalMaterialsDetails(int? id)
         {
             if (id == null)
@@ -128,6 +152,10 @@ namespace BlingLeatherProductsLtd.Controllers
                 return View(details);
             }
         }
+
+
+
+        [Authorize(Roles = "Admin")]
         public IActionResult PostChemicalMaterialDetails(int? id)
         {
             if (id == null)
@@ -137,6 +165,9 @@ namespace BlingLeatherProductsLtd.Controllers
             var det = db.ChemicalMaterialsDetails.Find(id);
             return View(det.CMID);
         }
+
+
+        [Authorize(Roles = "Admin")]
         //POST-CREATE
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -159,20 +190,26 @@ namespace BlingLeatherProductsLtd.Controllers
             db.SaveChanges();
             return RedirectToAction("ChemicalMaterialsLists");
         }
-        //GET-EDIT
-        public IActionResult EditChemicalMaterialsDetails(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            var chemical = db.ChemicalMaterialsDetails.Find(id);
-            if (chemical == null)
-            {
-                return NotFound();
-            }
-            return View(chemical);
-        }
+
+
+        //[Authorize(Roles = "Admin")]
+        ////GET-EDIT
+        //public IActionResult EditChemicalMaterialsDetails(int? id)
+        //{
+        //    if (id == null || id == 0)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var chemical = db.ChemicalMaterialsDetails.Find(id);
+        //    if (chemical == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(chemical);
+        //}
+
+
+        [Authorize(Roles = "Admin")]
         //POST-EDIT
         [HttpPost]
         [ValidateAntiForgeryToken]

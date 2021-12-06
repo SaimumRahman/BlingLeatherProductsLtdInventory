@@ -14,10 +14,7 @@ namespace BlingLeatherProductsLtd.Models
         public int CMID { get; set; }
         [Required]
         public string Date { get; set; }
-        [Required]
-        public string ChalanNumber { get; set; }
-        [Required]
-        public string Unit { get; set; }
+        
         [Required]
         public string IssuedQuantity { get; set; }
         [Required]

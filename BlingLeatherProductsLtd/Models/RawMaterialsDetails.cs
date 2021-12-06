@@ -13,11 +13,7 @@ namespace BlingLeatherProductsLtd.Models
         [Required]
         public int RMID { get; set; }
         [Required]
-        public string Date { get; set; }
-        [Required]
-        public string ChalanNumber { get; set; }
-        [Required]
-        public string Unit { get; set; }
+        public string Date { get; set; }   
         [Required]
         public string IssuedQuantity { get; set; }
         [Required]

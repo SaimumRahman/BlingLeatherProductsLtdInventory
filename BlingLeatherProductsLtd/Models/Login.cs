@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlingLeatherProductsLtd.Models
 {
-    public class StoreLogin
+    public class Login
     {
         [Key]
         public int StoreUserId{ get; set; }
