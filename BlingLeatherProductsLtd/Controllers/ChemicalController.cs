@@ -25,20 +25,9 @@ namespace BlingLeatherProductsLtd.Controllers
         public IActionResult ChemicalMaterialsLists()
         {
 
-            var obj = HttpContext.Session.GetString("log");
-
-            if (obj == null)
-            {
-
-                return RedirectToAction("Login");
-            }
-            else {
-                 IEnumerable<ChemicalMaterials> chemicalMaterials = db.ChemicalMaterials;
-                 return View(chemicalMaterials);
+             IEnumerable<ChemicalMaterials> chemicalMaterials = db.ChemicalMaterials;
+             return View(chemicalMaterials);
                
-            }
-
-            
         }
 
 
