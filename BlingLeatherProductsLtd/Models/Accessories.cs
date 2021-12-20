@@ -10,9 +10,15 @@ namespace BlingLeatherProductsLtd.Models
     {
         [Key]
         public int AID { get; set; }
-        [Required]
 
+        [Required]
         public string AName { get; set; }
+        
+        [Required]
+        public string ATotalQuantity { get; set; }
+        
+        [Required]
+        public string AUnit { get; set; }
 
     }
 }

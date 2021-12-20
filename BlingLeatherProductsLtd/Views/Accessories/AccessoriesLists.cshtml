@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <title>Raw Materials List</title>
+    <title>Accessories List</title>
     <style type="text/css">
         * {
             margin: 0;
@@ -91,7 +91,7 @@
 </head>
 <body>
     <div class="col-6 text-right">
-        <a asp-controller="Chemical" asp-action="PostChemicalMaterialsLists" class="btn btn-primary">
+        <a asp-controller="Accessories" asp-action="PostAccessories" class="btn btn-primary">
             Add Accessories
         </a>
     </div>
@@ -116,6 +116,12 @@
                         <th>
                            A-Name
                         </th>
+                        <th>
+                           A-Total Quantity
+                        </th>
+                        <th>
+                           A-Unit
+                        </th>
                         <th> 
                           Actions
                         </th>
@@ -129,13 +135,15 @@
                         <tr>
                             <td>@accessories.AID</td>
                             <td>@accessories.AName</td>
+                            <td>@accessories.ATotalQuantity</td>
+                            <td>@accessories.AUnit</td>
                            
                             <td class="text-center">
                                 <div class="btn-group" role="group">
-                                    <a asp-controller="Chemical" asp-route-ID="@accessories.AID" asp-action="EditChemicalMaterials" class="btn btn-outline-primary">Edit</a>
-                                    <a asp-controller="Chemical" asp-route-ID="@@accessories.AID" asp-action="Delete" class="btn btn-outline-danger">Delete</a>
-                                    <a asp-controller="Chemical" asp-route-ID="@@accessories.AID" asp-action="ChemicalMaterialsDetails" class="btn btn-outline-secondary">Recieved</a>
-                                    <a asp-controller="Chemical" asp-route-ID="@@accessories.AID" asp-action="ChemicalMaterialsDetails" class="btn btn-outline-secondary">Requisition</a>
+                                    <a asp-controller="Accessories" asp-route-ID="@accessories.AID" asp-action="EditAccessoriesName" class="btn btn-outline-primary">Edit</a>
+                                    <a asp-controller="Accessories" asp-route-ID="@accessories.AID" asp-action="Delete" class="btn btn-outline-danger">Delete</a>
+                                    <a asp-controller="Accessories" asp-route-ID="@accessories.AID" asp-action="RecievedDetails" class="btn btn-outline-secondary">Recieved</a>
+                                    <a asp-controller="Accessories" asp-route-ID="@accessories.AID" asp-action="RequisitionDetails" class="btn btn-outline-secondary">Requisition</a>
 
                                 </div>
                             </td>

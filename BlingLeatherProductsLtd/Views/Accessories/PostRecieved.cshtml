@@ -1,0 +1,92 @@
+﻿@model RecievedAccessoriess
+
+<form method="post" asp-action="PostRecieved">
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3">Add Recieved Accessories</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row text-center font-weight-bold">
+
+                    <div class="col-2">
+                        <label asp-for="AID"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="Date"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="RecievedQnty"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="OrderedQnty"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="Invoices"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="Remarks"></label>
+                    </div>
+
+                </div>
+
+                <div class="form-group row text-center">
+                    <div class="col-2">
+                        <input asp-for="AID" class="form-control" />
+                        <span asp-validation-for="AID" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="Date" class="form-control" />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="RecievedQnty" class="form-control" />
+                        <span asp-validation-for="RecievedQnty" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="OrderedQnty" class="form-control" />
+                        <span asp-validation-for="OrderedQnty" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="Invoices" class="form-control" />
+                        <span asp-validation-for="Invoices" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="Remarks" class="form-control" />
+                        <span asp-validation-for="Remarks" class="text-danger"></span>
+                    </div>
+
+
+
+                </div>
+                <div class="form-group row text-center font-weight-bold">
+
+                </div>
+
+                <div class="form-group row text-center">
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <input type="submit" class="btn-info w-75" value="Add Recieved Accessories" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="AccessoriesLists" class="btn btn-danger w-75">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}
+
+
+

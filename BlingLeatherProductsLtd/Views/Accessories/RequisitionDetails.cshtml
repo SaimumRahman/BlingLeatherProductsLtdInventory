@@ -1,21 +1,21 @@
-﻿@model IEnumerable<ChemicalMaterialsDetails>
+﻿@model IEnumerable<RequisitionAccessories>
 
 
 @using (Html.BeginForm())
 {
-    <input type="text" name="CMID" hidden />
+    <input type="text" name="AID" hidden />
 
 }
 <div class="container p-3">
     <div class="row pt-4">
 
         <div class="col-6">
-            <h2 class="text-primary">Chemical Materials List</h2>
+            <h2 class="text-primary">Requisition Accessories</h2>
         </div>
 
         <div class="col-6 text-right">
-            <a asp-controller="Chemical" asp-action="PostChemicalMaterialDetails" class="btn btn-primary">
-                Add Chemical Materials Details
+            <a asp-controller="Accessories" asp-action="PostRequisition" class="btn btn-primary">
+                Add Requisition Accessories
             </a>
         </div>
 
@@ -26,51 +26,51 @@
     {
 
 
-        <table class="table table-bordered table-striped" style="width:5%">
+        <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>
-                        CMDID
+                        RAID
                     </th>
+                  
                     <th>
-                        CMID
+                        AID
                     </th>
                     <th>
                         Date
                     </th>
-                 
+
                     <th>
-                        IssuedQuantity
+                        IssuedQnty
                     </th>
                     <th>
-                        BalanceQuantity
+                        RequisitionNo.
                     </th>
                     <th>
-                        RequisitionNumber
-                    </th>
-                    <th>
-                        SectionOrDepartment
+                        Section
                     </th>
                     <th>
                         Remarks
                     </th>
+
                 </tr>
             </thead>
             <tbody>
                 @foreach (var details in Model)
                 {
                     <tr>
-                        <td>@details.CMDID</td>
-                        <td>@details.CMID</td>
+                        <td>@details.RAID</td>
+                        
+                        <td>@details.AID</td>
                         <td>@details.Date</td>
-                        <td>@details.IssuedQuantity</td>
-                        <td>@details.BalanceQuantity</td>
-                        <td>@details.RequisitionNumber</td>
-                        <td>@details.SectionOrDepartment</td>
+                        <td>@details.IssuedQnty</td>
+                        <td>@details.RequisitionNo</td>
                         <td>@details.Remarks</td>
+
                         <td class="text-center">
                             <div class="btn-group" role="group">
-                                <a asp-controller="Chemical" asp-route-ID="@details.CMDID" asp-action="EditChemicalMaterialsDetails" class="btn btn-outline-primary">EDIT</a>
+                                <a asp-controller="Accessories" asp-route-ID="@details.RAID" asp-action="EditRequistionAcc" class="btn btn-outline-primary">EDIT</a>
+
 
                             </div>
                         </td>

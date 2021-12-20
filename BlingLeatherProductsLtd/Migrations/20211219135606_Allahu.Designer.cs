@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlingLeatherProductsLtd.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20211206132603_accessories")]
-    partial class accessories
+    [Migration("20211219135606_Allahu")]
+    partial class Allahu
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,14 @@ namespace BlingLeatherProductsLtd.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ATotalQuantity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AUnit")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -221,6 +229,41 @@ namespace BlingLeatherProductsLtd.Migrations
                     b.HasKey("RMDID");
 
                     b.ToTable("RawMaterialsDetails");
+                });
+
+            modelBuilder.Entity("BlingLeatherProductsLtd.Models.RecievedAccessoriess", b =>
+                {
+                    b.Property<int>("ARID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Invoices")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrderedQnty")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RecievedQnty")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Remarks")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ARID");
+
+                    b.ToTable("RecievedAccessories");
                 });
 #pragma warning restore 612, 618
         }
